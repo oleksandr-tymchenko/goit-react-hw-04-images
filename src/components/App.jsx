@@ -17,7 +17,7 @@ export const App = () => {
   const [largeImgURL, setLargeImgURL] = useState('');
   const [value, setValue] = useState('');
   const [page, setPage] = useState(1);
-  const [per_page] = useState(12);
+  // const [per_page] = useState(12);
   const [isError, setIsError] = useState('');
   const [showBtn, setShowBtn] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
@@ -31,8 +31,8 @@ export const App = () => {
     getImages(value, page)
       .then(data => {
         setIsEmpty(!data.hits.length);
-        setImages([...images, ...data.hits]);
-        setShowBtn(page < Math.ceil(data.total / per_page));
+        setImages(i => [...i, ...data.hits]);
+        setShowBtn(page < Math.ceil(data.total / 12));
       })
       .catch(() => {
         setIsError(true);
