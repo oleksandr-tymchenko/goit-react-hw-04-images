@@ -34,7 +34,7 @@ export const App = () => {
         setImages(i => [...i, ...data.hits]);
         setShowBtn(page < Math.ceil(data.total / 12));
       })
-      .catch(() => {
+      .catch(error => {
         setIsError(true);
       })
       .finally(() => {
